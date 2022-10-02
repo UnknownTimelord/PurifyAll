@@ -8,5 +8,9 @@
   "item.purifyall.emerald_purifying_agent" : "Emerald Purifying Agent",
   "block.purifyall.emerald_purifying_agent_block": "Block of Emerald Purifying Agent",
   "item.purifyall.purifying_liquid_bucket": "Bucket of Purifying Agent",
-  "block.purifyall.purifier": "Purifier"
+  "block.purifyall.purifier": "Purifier",
+
+  "fluid_type.purifyall.purifying_fluid": "Purifying Agent",
+  "purifyall.tooltip.liquid.amount.with.capacity" : "%s / %s mB",
+  "purifyall.tooltip.liquid.amount": "%s mB"
 }

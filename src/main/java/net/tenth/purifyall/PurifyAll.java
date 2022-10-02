@@ -16,6 +16,7 @@ import net.tenth.purifyall.block.entity.ModBlockEntities;
 import net.tenth.purifyall.fluid.ModFluidTypes;
 import net.tenth.purifyall.fluid.ModFluids;
 import net.tenth.purifyall.item.ModItems;
+import net.tenth.purifyall.networking.ModMessages;
 import net.tenth.purifyall.recipe.ModRecipes;
 import net.tenth.purifyall.screen.ModMenuTypes;
 import net.tenth.purifyall.screen.PurifierScreen;
@@ -37,6 +38,7 @@ public class PurifyAll
         ModBlockEntities.register(modEventBus);
         ModMenuTypes.register(modEventBus);
         ModRecipes.register(modEventBus);
+        ModMessages.register();
         modEventBus.addListener(this::commonSetup);
         MinecraftForge.EVENT_BUS.register(this);
     }

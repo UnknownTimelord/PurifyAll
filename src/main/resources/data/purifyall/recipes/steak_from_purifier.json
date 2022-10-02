@@ -3,6 +3,10 @@
   "ingredients": [
     {"item": "minecraft:rotten_flesh"}
   ],
+  "fluid": {
+    "FluidName": "purifyall:purifying_fluid",
+    "Amount": "500"
+  },
   "output": {
     "item": "minecraft:cooked_beef"
   }

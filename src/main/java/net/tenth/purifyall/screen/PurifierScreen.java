@@ -7,17 +7,63 @@ import net.minecraft.client.renderer.GameRenderer;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Inventory;
+import net.minecraft.world.item.TooltipFlag;
 import net.tenth.purifyall.PurifyAll;
+import net.tenth.purifyall.screen.renderer.EnergyInfoArea;
+import net.tenth.purifyall.screen.renderer.FluidTankRenderer;
+import net.tenth.purifyall.util.MouseUtil;
+
+import java.util.Optional;
 
 public class PurifierScreen extends AbstractContainerScreen<PurifierMenu> {
     private static final ResourceLocation TEXTURE =
             new ResourceLocation(PurifyAll.MOD_ID, "textures/gui/purifier_gui.png");
+    private EnergyInfoArea energyInfoArea;
+    private FluidTankRenderer renderer;
 
     public PurifierScreen(PurifierMenu pMenu, Inventory pPlayerInventory, Component pTitle) {
         super(pMenu, pPlayerInventory, pTitle);
     }
 
+    @Override
+    protected void init() {
+        super.init();
+        assignEnergyInfoArea();
+        assignFluidRenderer();
+    }
 
+    private void assignFluidRenderer() {
+        renderer = new FluidTankRenderer(64000, true, 10, 66);
+    }
+
+    private void assignEnergyInfoArea() {
+        int x = (width - imageWidth) / 2;
+        int y = (height - imageHeight) / 2;
+        energyInfoArea = new EnergyInfoArea(x + 156, y + 13, menu.blockEntity.getEnergyStorage());
+    }
+
+    @Override
+    protected void renderLabels(PoseStack pPoseStack, int pMouseX, int pMouseY) {
+        int x = (width - imageWidth) / 2;
+        int y = (height - imageHeight) / 2;
+
+        renderEnergyAreaTooltips(pPoseStack, pMouseX, pMouseY, x, y);
+        renderFluidAreaTooltips(pPoseStack, pMouseX, pMouseY, x, y);
+    }
+
+    private void renderFluidAreaTooltips(PoseStack pPoseStack, int pMouseX, int pMouseY, int x, int y) {
+        if(isMouseAboveArea(pMouseX, pMouseY, x, y, 9, 13, 8, 64)) {
+            renderTooltip(pPoseStack, renderer.getTooltip(menu.getFluidStack(), TooltipFlag.Default.NORMAL),
+                    Optional.empty(), pMouseX - x, pMouseY - y);
+        }
+    }
+
+    private void renderEnergyAreaTooltips(PoseStack pPoseStack, int pMouseX, int pMouseY, int x, int y) {
+        if(isMouseAboveArea(pMouseX, pMouseY, x, y, 156, 13, 6, 62)) {
+            renderTooltip(pPoseStack, energyInfoArea.getTooltips(),
+                    Optional.empty(), pMouseX - x, pMouseY - y);
+        }
+    }
 
     @Override
     protected void renderBg(PoseStack pPoseStack, float pPartialTick, int pMouseX, int pMouseY) {
@@ -29,6 +75,8 @@ public class PurifierScreen extends AbstractContainerScreen<PurifierMenu> {
 
         this.blit(pPoseStack, x, y, 0, 0, imageWidth, imageHeight);
         renderProgressArrow(pPoseStack, x, y);
+        energyInfoArea.draw(pPoseStack);
+        renderer.render(pPoseStack, x + 9, y + 13, menu.getFluidStack());
     }
 
     private void renderProgressArrow(PoseStack pPoseStack, int x, int y) {
@@ -43,4 +91,9 @@ public class PurifierScreen extends AbstractContainerScreen<PurifierMenu> {
         super.render(pPoseStack, pMouseX, pMouseY, pPartialTick);
         renderTooltip(pPoseStack, pMouseX, pMouseY);
     }
+
+    private boolean isMouseAboveArea(int pMouseX, int pMouseY, int x, int y, int offsetX, int offsetY, int width, int height) {
+        return MouseUtil.isMouseOver(pMouseX, pMouseY, x + offsetX, y + offsetY, width, height);
+    }
+
 }

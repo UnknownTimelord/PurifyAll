@@ -18,7 +18,6 @@ public class PurifyingAgent extends Item {
         this.purifying_level = pProperties.get_purifying_level();
     }
     private float purifying_level = -1;
-
     public float get_purifying_level() {
         return this.purifying_level;
     }

@@ -1,5 +1,6 @@
 package net.tenth.purifyall.screen;
 
+import net.minecraft.commands.arguments.coordinates.Coordinates;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
@@ -7,7 +8,8 @@ import net.minecraft.world.inventory.*;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraftforge.items.CapabilityItemHandler;
+import net.minecraftforge.common.capabilities.ForgeCapabilities;
+import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.items.SlotItemHandler;
 import net.tenth.purifyall.block.ModBlocks;
 import net.tenth.purifyall.block.entity.PurifierBlockEntity;
@@ -16,6 +18,7 @@ public class PurifierMenu extends AbstractContainerMenu {
     public final PurifierBlockEntity blockEntity;
     private final Level level;
     private final ContainerData data;
+    private FluidStack fluidStack;
 
     public PurifierMenu(int id, Inventory inv, FriendlyByteBuf extraData) {
         // ITS IMPORTANT YOU MAKE SURE THIS PSIZE MATCHES THE GETCOUNT NUMBER IN THE ENTITY CLASS             \/
@@ -30,11 +33,12 @@ public class PurifierMenu extends AbstractContainerMenu {
         blockEntity = (PurifierBlockEntity) entity;
         this.level = inv.player.level;
         this.data = data;
+        this.fluidStack = blockEntity.getFluidStack();
 
         addPlayerInventory(inv);
         addPlayerHotbar(inv);
 
-        this.blockEntity.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY).ifPresent(iItemHandler -> {
+        this.blockEntity.getCapability(ForgeCapabilities.ITEM_HANDLER).ifPresent(iItemHandler -> {
             this.addSlot(new SlotItemHandler(iItemHandler, 0, 26, 60));
             this.addSlot(new SlotItemHandler(iItemHandler, 1, 66, 38));
             this.addSlot(new SlotItemHandler(iItemHandler, 2, 106, 38));
@@ -45,6 +49,19 @@ public class PurifierMenu extends AbstractContainerMenu {
 
     public boolean isCrafting() {
         return data.get(0) > 0;
+    }
+
+    public void setFluid(FluidStack fluidStack) {
+        this.fluidStack = fluidStack;
+
+    }
+
+    public FluidStack getFluidStack() {
+        return fluidStack;
+    }
+
+    public PurifierBlockEntity getBlockEntity() {
+        return this.blockEntity;
     }
 
     public int getScaledProgress() {
