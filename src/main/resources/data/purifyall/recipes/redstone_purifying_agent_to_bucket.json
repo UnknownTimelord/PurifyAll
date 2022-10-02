@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {"item": "purifyall:redstone_purifying_agent"},
+    {"item": "minecraft:water_bucket"},
+    {"item": "purifyall:redstone_purifying_agent_block"}
+  ],
+  "result": {
+    "item": "purifyall:purifying_liquid_bucket"
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {"item": "purifyall:emerald_purifying_agent"},
+    {"item": "purifyall:emerald_purifying_agent"},
+    {"item": "purifyall:diamond_purifying_agent"},
+    {"item": "minecraft:water_bucket"}
+  ],
+  "result": {
+    "item": "purifyall:purifying_liquid_bucket"
+  }
+}
