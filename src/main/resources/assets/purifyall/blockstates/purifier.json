@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "purifyall:block/purifier"
+    },
+    "facing=south": {
+      "model": "purifyall:block/purifier",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "purifyall:block/purifier",
+      "y": 270
+    },
+    "facing=east": {
+      "model": "purifyall:block/purifier",
+      "y": 90
+    }
+  }
+}

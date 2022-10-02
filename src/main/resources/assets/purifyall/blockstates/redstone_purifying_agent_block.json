@@ -1,0 +1,5 @@
+{
+  "variants": {
+    "": { "model": "purifyall:block/redstone_purifying_agent_block" }
+  }
+}

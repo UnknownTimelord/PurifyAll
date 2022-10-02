@@ -1,0 +1,6 @@
+{
+  "parent": "block/cube_all",
+  "textures": {
+    "all": "purifyall:block/redstone_purifying_agent_block"
+  }
+}

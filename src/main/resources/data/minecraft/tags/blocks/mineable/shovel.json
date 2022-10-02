@@ -1,0 +1,8 @@
+{
+  "replace": "false",
+  "values": [
+    "purifyall:redstone_purifying_agent_block",
+    "purifyall:diamond_purifying_agent_block",
+    "purifyall:emerald_purifying_agent_block"
+  ]
+}

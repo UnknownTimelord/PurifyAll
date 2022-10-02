@@ -1,0 +1,12 @@
+{
+  "itemGroup.purify_tab": "Purify All!",
+
+  "item.purifyall.redstone_purifying_agent" : "Redstone Purifying Agent",
+  "block.purifyall.redstone_purifying_agent_block": "Block of Redstone Purifying Agent",
+  "item.purifyall.diamond_purifying_agent" : "Diamond Purifying Agent",
+  "block.purifyall.diamond_purifying_agent_block": "Block of Diamond Purifying Agent",
+  "item.purifyall.emerald_purifying_agent" : "Emerald Purifying Agent",
+  "block.purifyall.emerald_purifying_agent_block": "Block of Emerald Purifying Agent",
+  "item.purifyall.purifying_liquid_bucket": "Bucket of Purifying Agent",
+  "block.purifyall.purifier": "Purifier"
+}

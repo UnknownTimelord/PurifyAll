@@ -1,0 +1,9 @@
+{
+  "type": "purifyall:purifying",
+  "ingredients": [
+    {"item": "minecraft:rotten_flesh"}
+  ],
+  "output": {
+    "item": "minecraft:cooked_beef"
+  }
+}

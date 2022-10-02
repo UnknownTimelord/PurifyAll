@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {"item": "minecraft:sugar"},
+    {"item": "minecraft:redstone"}
+  ],
+  "result": {
+    "item": "purifyall:redstone_purifying_agent"
+  }
+}
