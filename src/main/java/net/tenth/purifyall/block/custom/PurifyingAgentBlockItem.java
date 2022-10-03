@@ -23,12 +23,13 @@ public class PurifyingAgentBlockItem extends BlockItem {
     @Override
     public void appendHoverText(ItemStack pStack, @Nullable Level pLevel, List<Component> pTooltipComponents, TooltipFlag pIsAdvanced) {
         if(Screen.hasShiftDown()){
-            if(this.purifying_level >= 0) {
+            if(this.purifying_level >= 0)
+            {
                 pTooltipComponents.add(Component.literal("Purifying Level: " + this.purifying_level)
                         .withStyle(ChatFormatting.BOLD, ChatFormatting.AQUA));
             } else {
-                pTooltipComponents.add(Component.literal("No Purifying Level")
-                        .withStyle(ChatFormatting.BOLD, ChatFormatting.DARK_RED));
+                pTooltipComponents.add(Component.literal("Purifies items using FE and Purifying Agent")
+                        .withStyle(ChatFormatting.BOLD, ChatFormatting.AQUA));
             }
         } else {
             pTooltipComponents.add(Component.literal("Press SHIFT for more information")
