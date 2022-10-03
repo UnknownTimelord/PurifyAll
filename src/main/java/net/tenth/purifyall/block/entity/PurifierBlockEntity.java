@@ -26,6 +26,7 @@ import net.minecraftforge.fluids.capability.templates.FluidTank;
 import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.ItemStackHandler;
 import net.tenth.purifyall.block.custom.PurifierBlock;
+import net.tenth.purifyall.config.PurifyAllConfig;
 import net.tenth.purifyall.fluid.ModFluids;
 import net.tenth.purifyall.networking.ModMessages;
 import net.tenth.purifyall.networking.packet.EnergySyncS2CPacket;
@@ -57,7 +58,7 @@ public class PurifierBlockEntity extends BlockEntity implements MenuProvider {
         }
     };
 
-    private final ModEnergyStorage ENERGY_STORAGE = new ModEnergyStorage(50000, 100) {
+    private final ModEnergyStorage ENERGY_STORAGE = new ModEnergyStorage(PurifyAllConfig.purifier_energy_capacity.get(), 100) {
         @Override
         public void onEnergyChanged() {
             setChanged();
@@ -65,9 +66,7 @@ public class PurifierBlockEntity extends BlockEntity implements MenuProvider {
         }
     };
 
-    private static final int ENERGY_REQ = 100;
-
-    private final FluidTank FLUID_TANK = new FluidTank(64000) {
+    private final FluidTank FLUID_TANK = new FluidTank(PurifyAllConfig.purifier_fluid_capacity.get()) {
         @Override
         protected void onContentsChanged() {
             setChanged();
@@ -107,7 +106,8 @@ public class PurifierBlockEntity extends BlockEntity implements MenuProvider {
 
     protected final ContainerData data;
     private int progress = 0;
-    private int maxProgress = 78;
+    private int maxProgress = PurifyAllConfig.purifier_craft_time.get();
+    private static final int ENERGY_REQ = PurifyAllConfig.energy_to_purify.get();
 
     public PurifierBlockEntity(BlockPos pPos, BlockState pBlockState) {
         super(ModBlockEntities.PURIFIER.get(), pPos, pBlockState);

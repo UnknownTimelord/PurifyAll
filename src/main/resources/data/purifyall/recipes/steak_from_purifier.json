@@ -5,8 +5,9 @@
   ],
   "fluid": {
     "FluidName": "purifyall:purifying_fluid",
-    "Amount": 500
+    "Amount": 100
   },
+  "energy": 50,
   "output": {
     "item": "minecraft:cooked_beef"
   }

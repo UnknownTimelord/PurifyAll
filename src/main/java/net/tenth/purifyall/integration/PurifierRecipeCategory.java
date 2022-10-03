@@ -14,6 +14,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
 import net.tenth.purifyall.PurifyAll;
 import net.tenth.purifyall.block.ModBlocks;
+import net.tenth.purifyall.config.PurifyAllConfig;
 import net.tenth.purifyall.recipe.PurifierRecipe;
 
 import java.util.List;
@@ -58,7 +59,7 @@ public class PurifierRecipeCategory implements IRecipeCategory<PurifierRecipe> {
                 .addIngredients(recipe.getIngredients().get(0));
         builder.addSlot(RecipeIngredientRole.INPUT, 9, 13)
                 .addIngredients(ForgeTypes.FLUID_STACK, List.of(recipe.getFluid()))
-                        .setFluidRenderer(64000, false, 10, 66);
+                        .setFluidRenderer(PurifyAllConfig.purifier_fluid_capacity.get(), false, 10, 66);
         builder.addSlot(RecipeIngredientRole.OUTPUT, 106, 38).addItemStack(recipe.getResultItem());
 
     }

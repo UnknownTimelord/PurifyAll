@@ -9,6 +9,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.item.TooltipFlag;
 import net.tenth.purifyall.PurifyAll;
+import net.tenth.purifyall.config.PurifyAllConfig;
 import net.tenth.purifyall.screen.renderer.EnergyInfoArea;
 import net.tenth.purifyall.screen.renderer.FluidTankRenderer;
 import net.tenth.purifyall.util.MouseUtil;
@@ -33,7 +34,7 @@ public class PurifierScreen extends AbstractContainerScreen<PurifierMenu> {
     }
 
     private void assignFluidRenderer() {
-        renderer = new FluidTankRenderer(64000, true, 10, 66);
+        renderer = new FluidTankRenderer(PurifyAllConfig.purifier_fluid_capacity.get(), true, 10, 66);
     }
 
     private void assignEnergyInfoArea() {

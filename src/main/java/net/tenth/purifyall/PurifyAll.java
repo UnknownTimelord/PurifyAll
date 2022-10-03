@@ -13,6 +13,7 @@ import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.tenth.purifyall.block.ModBlocks;
 import net.tenth.purifyall.block.entity.ModBlockEntities;
+import net.tenth.purifyall.config.PurifyAllConfig;
 import net.tenth.purifyall.fluid.ModFluidTypes;
 import net.tenth.purifyall.fluid.ModFluids;
 import net.tenth.purifyall.item.ModItems;
@@ -39,6 +40,7 @@ public class PurifyAll
         ModMenuTypes.register(modEventBus);
         ModRecipes.register(modEventBus);
         ModMessages.register();
+        PurifyAllConfig.register();
         modEventBus.addListener(this::commonSetup);
         MinecraftForge.EVENT_BUS.register(this);
     }
