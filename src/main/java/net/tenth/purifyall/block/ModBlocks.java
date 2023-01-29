@@ -66,5 +66,6 @@ public class ModBlocks {
             ()-> new PurifierBlock(BlockBehaviour.Properties.of(Material.METAL)
                     .strength(4f)
                     .sound(SoundType.METAL)
-                    .requiresCorrectToolForDrops()), ModCreativeModeTab.PURIFY_TAB, -1);
+                    .requiresCorrectToolForDrops()
+                    .noOcclusion()), ModCreativeModeTab.PURIFY_TAB, -1);
 }

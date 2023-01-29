@@ -31,6 +31,7 @@ import net.tenth.purifyall.fluid.ModFluids;
 import net.tenth.purifyall.networking.ModMessages;
 import net.tenth.purifyall.networking.packet.EnergySyncS2CPacket;
 import net.tenth.purifyall.networking.packet.FluidSyncS2CPacket;
+import net.tenth.purifyall.networking.packet.ItemStackSyncS2CPacket;
 import net.tenth.purifyall.recipe.PurifierRecipe;
 import net.tenth.purifyall.screen.PurifierMenu;
 import net.tenth.purifyall.util.ModEnergyStorage;
@@ -45,6 +46,9 @@ public class PurifierBlockEntity extends BlockEntity implements MenuProvider {
         @Override
         protected void onContentsChanged(int slot) {
             setChanged();
+            if(!level.isClientSide) {
+                ModMessages.sendToClients(new ItemStackSyncS2CPacket(this, worldPosition));
+            }
         }
 
         @Override
@@ -89,6 +93,22 @@ public class PurifierBlockEntity extends BlockEntity implements MenuProvider {
         return this.FLUID_TANK.getFluid();
     }
 
+    public ItemStack getRenderStack() {
+        ItemStack stack;
+
+        if(!itemHandler.getStackInSlot(2).isEmpty()) {
+            stack = itemHandler.getStackInSlot(2);
+        } else {
+            stack = itemHandler.getStackInSlot(1);
+        }
+        return stack;
+    }
+
+    public void setHandler(ItemStackHandler itemStackhandler) {
+        for (int i = 0; i < itemStackhandler.getSlots(); i++) {
+            itemHandler.setStackInSlot(i, itemStackhandler.getStackInSlot(i));
+        }
+    }
     private LazyOptional<IItemHandler> lazyItemHandler = LazyOptional.empty();
 
     private final Map<Direction, LazyOptional<WrappedHandler>> directionWrappedHandlerMap =

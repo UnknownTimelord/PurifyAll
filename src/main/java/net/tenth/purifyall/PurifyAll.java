@@ -4,6 +4,7 @@ import com.mojang.logging.LogUtils;
 import net.minecraft.client.gui.screens.MenuScreens;
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
 import net.minecraft.client.renderer.RenderType;
+import net.minecraftforge.client.event.EntityRenderersEvent;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -13,6 +14,7 @@ import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.tenth.purifyall.block.ModBlocks;
 import net.tenth.purifyall.block.entity.ModBlockEntities;
+import net.tenth.purifyall.block.entity.renderer.PurifierBlockEntityRenderer;
 import net.tenth.purifyall.config.PurifyAllConfig;
 import net.tenth.purifyall.fluid.ModFluidTypes;
 import net.tenth.purifyall.fluid.ModFluids;
@@ -32,16 +34,23 @@ public class PurifyAll
     public PurifyAll()
     {
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
+
         ModItems.register(modEventBus);
         ModBlocks.register(modEventBus);
+
         ModFluids.register(modEventBus);
         ModFluidTypes.register(modEventBus);
+
         ModBlockEntities.register(modEventBus);
         ModMenuTypes.register(modEventBus);
+
         ModRecipes.register(modEventBus);
         ModMessages.register();
+
         PurifyAllConfig.register();
+
         modEventBus.addListener(this::commonSetup);
+
         MinecraftForge.EVENT_BUS.register(this);
     }
 

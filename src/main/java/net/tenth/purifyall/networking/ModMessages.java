@@ -9,6 +9,7 @@ import net.minecraftforge.network.simple.SimpleChannel;
 import net.tenth.purifyall.PurifyAll;
 import net.tenth.purifyall.networking.packet.EnergySyncS2CPacket;
 import net.tenth.purifyall.networking.packet.FluidSyncS2CPacket;
+import net.tenth.purifyall.networking.packet.ItemStackSyncS2CPacket;
 
 public class ModMessages {
     private static SimpleChannel INSTANCE;
@@ -38,6 +39,12 @@ public class ModMessages {
                 .decoder(FluidSyncS2CPacket::new)
                 .encoder(FluidSyncS2CPacket::toBytes)
                 .consumerMainThread(FluidSyncS2CPacket::handle)
+                .add();
+
+        net.messageBuilder(ItemStackSyncS2CPacket.class, id(), NetworkDirection.PLAY_TO_CLIENT)
+                .decoder(ItemStackSyncS2CPacket::new)
+                .encoder(ItemStackSyncS2CPacket::toBytes)
+                .consumerMainThread(ItemStackSyncS2CPacket::handle)
                 .add();
     }
 
