@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:smithing",
+  "addition": {
+    "item": "purifyall:netherite_plate"
+  },
+  "base": {
+    "item": "purifyall:diamond_hammer"
+  },
+  "result": {
+    "item": "purifyall:netherite_hammer"
+  }
+}

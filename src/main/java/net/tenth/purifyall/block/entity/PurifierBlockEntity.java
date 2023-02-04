@@ -127,7 +127,16 @@ public class PurifierBlockEntity extends BlockEntity implements MenuProvider {
     protected final ContainerData data;
     private int progress = 0;
     private int maxProgress = PurifyAllConfig.purifier_craft_time.get();
-    private static final int ENERGY_REQ = PurifyAllConfig.energy_to_purify.get();
+    private static int ENERGY_REQ = PurifyAllConfig.energy_to_purify.get();
+
+    public static void changeEnergyReq (int new_energy, String change_type) {
+        switch (change_type) {
+            case "set" -> ENERGY_REQ = new_energy;
+            case "add" -> ENERGY_REQ += new_energy;
+            case "subtract" -> ENERGY_REQ -= new_energy;
+            case "divide" -> ENERGY_REQ /= new_energy;
+        }
+    }
 
     public PurifierBlockEntity(BlockPos pPos, BlockState pBlockState) {
         super(ModBlockEntities.PURIFIER.get(), pPos, pBlockState);

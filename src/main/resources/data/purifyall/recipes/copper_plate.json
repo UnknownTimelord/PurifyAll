@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {"item": "minecraft:copper_ingot"},
+    {"item": "minecraft:copper_ingot"},
+    {"tag": "purifyall:tools/hammers/all"}
+  ],
+  "result": {
+    "item": "purifyall:copper_plate"
+  }
+}

@@ -3,6 +3,7 @@ package net.tenth.purifyall.block.custom;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.network.chat.Component;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
@@ -17,7 +18,9 @@ public class PurifyingAgentBlockItem extends BlockItem {
     public PurifyingAgentBlockItem(Block pBlock, ModItemProperties pProperties) {
         super(pBlock, pProperties);
         this.purifying_level = pProperties.get_purifying_level();
+        this.machine_frame_material = pProperties.get_machine_frame_material();
     }
+    private final String machine_frame_material;
     private float purifying_level = -1;
 
     @Override
@@ -26,6 +29,9 @@ public class PurifyingAgentBlockItem extends BlockItem {
             if(this.purifying_level >= 0)
             {
                 pTooltipComponents.add(Component.literal("Purifying Level: " + this.purifying_level)
+                        .withStyle(ChatFormatting.BOLD, ChatFormatting.AQUA));
+            } else if (this.machine_frame_material != "") {
+                pTooltipComponents.add(Component.literal("Machine Frame of material: " + this.machine_frame_material)
                         .withStyle(ChatFormatting.BOLD, ChatFormatting.AQUA));
             } else {
                 pTooltipComponents.add(Component.literal("Purifies items using FE and Purifying Agent")

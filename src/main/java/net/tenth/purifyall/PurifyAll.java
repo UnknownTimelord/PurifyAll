@@ -4,7 +4,7 @@ import com.mojang.logging.LogUtils;
 import net.minecraft.client.gui.screens.MenuScreens;
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
 import net.minecraft.client.renderer.RenderType;
-import net.minecraftforge.client.event.EntityRenderersEvent;
+import net.minecraft.core.Direction;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -14,11 +14,11 @@ import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.tenth.purifyall.block.ModBlocks;
 import net.tenth.purifyall.block.entity.ModBlockEntities;
-import net.tenth.purifyall.block.entity.renderer.PurifierBlockEntityRenderer;
 import net.tenth.purifyall.config.PurifyAllConfig;
 import net.tenth.purifyall.fluid.ModFluidTypes;
 import net.tenth.purifyall.fluid.ModFluids;
 import net.tenth.purifyall.item.ModItems;
+import net.tenth.purifyall.loot.ModLootModifiers;
 import net.tenth.purifyall.networking.ModMessages;
 import net.tenth.purifyall.recipe.ModRecipes;
 import net.tenth.purifyall.screen.ModMenuTypes;
@@ -30,6 +30,15 @@ public class PurifyAll
 {
     public static final String MOD_ID = "purifyall";
     private static final Logger LOGGER = LogUtils.getLogger();
+
+    private static Direction faceMined;
+    public static Direction getFaceMined() {
+        return faceMined;
+    }
+
+    public static void setFaceMined(Direction faceMined) {
+        PurifyAll.faceMined = faceMined;
+    }
 
     public PurifyAll()
     {
@@ -48,6 +57,8 @@ public class PurifyAll
         ModMessages.register();
 
         PurifyAllConfig.register();
+
+        ModLootModifiers.register(modEventBus);
 
         modEventBus.addListener(this::commonSetup);
 

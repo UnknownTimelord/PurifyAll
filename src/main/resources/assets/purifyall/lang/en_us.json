@@ -10,6 +10,19 @@
   "item.purifyall.purifying_liquid_bucket": "Bucket of Purifying Agent",
   "block.purifyall.purifier": "Purifier",
 
+  "item.purifyall.iron_plate": "Iron Plate",
+  "item.purifyall.copper_plate": "Copper Plate",
+  "item.purifyall.gold_plate": "Gold Plate",
+  "item.purifyall.diamond_plate": "Diamond Plate",
+  "item.purifyall.netherite_plate": "Netherite Plate",
+
+  "item.purifyall.stone_hammer": "Stone Hammer",
+  "item.purifyall.iron_hammer": "Iron Hammer",
+  "item.purifyall.copper_hammer": "Copper Hammer",
+  "item.purifyall.gold_hammer": "Gold Hammer",
+  "item.purifyall.diamond_hammer": "Diamond Hammer",
+  "item.purifyall.netherite_hammer": "Netherite Hammer",
+
   "fluid_type.purifyall.purifying_fluid": "Purifying Agent",
   "purifyall.tooltip.liquid.amount.with.capacity" : "%s / %s mB",
   "purifyall.tooltip.liquid.amount": "%s mB"

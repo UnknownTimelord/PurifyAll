@@ -3,13 +3,10 @@ package net.tenth.purifyall.networking.packet;
 import net.minecraft.client.Minecraft;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.FriendlyByteBuf;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
-import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.items.ItemStackHandler;
 import net.minecraftforge.network.NetworkEvent;
 import net.tenth.purifyall.block.entity.PurifierBlockEntity;
-import net.tenth.purifyall.screen.PurifierMenu;
 
 import java.util.ArrayList;
 import java.util.Collection;

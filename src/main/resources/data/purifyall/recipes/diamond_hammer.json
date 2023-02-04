@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "###",
+    "#$#",
+    " $ "
+  ],
+  "key": {
+    "#": {
+      "item": "purifyall:diamond_plate"
+    },
+    "$": {
+      "item": "minecraft:stick"
+    }
+  },
+  "result": {
+    "item": "purifyall:diamond_hammer"
+  }
+}
